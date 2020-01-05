@@ -1,6 +1,7 @@
 # cdp-deploy
 
-cdp-deploy is a bash script that will install a full single node CDP Data Center cluster using Cloudera Manager. The aim is that cdp-deploy will always install the latest version of CDP and Cloudera Manager which is currently available for download from the [Cloudera website](https://www.cloudera.com/downloads.html). You will require a paywall username/password to download the bits and install. If you have access to CDF and its components, you can also set a flag for cdp-deploy to install those bits as well. 
+cdp-deploy is a bash script that will install a full single node CDP Data Center cluster using Cloudera Manager. The aim is that cdp-deploy will always install the latest version of CDP and Cloudera Manager which is currently available for download from the [Cloudera website](https://www.cloudera.com/downloads.html).<br />
+You will require a paywall username/password to download the bits and install. If you have access to CDF and its components, you can also set a flag for cdp-deploy to install those bits as well. 
 
 Latest installation version: CDP DC 7.0.3
 
