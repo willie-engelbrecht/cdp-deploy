@@ -40,7 +40,7 @@ export CDPONLY=0
 
 By default cdp-deploy will setup and download repositories directly from the internet. However it is also possible to use cdp-deploy in an "offline" mode, by editing the repo.env file and changing the value to 1 for:
 ```
-LOCALREPO=1
+export LOCALREPO=1
 ```
 
 ### Post installation
