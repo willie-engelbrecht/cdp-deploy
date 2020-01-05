@@ -33,6 +33,11 @@ export PWALL_USER=""
 export PWALL_PASS=""
 ```
 
+If you have access to CDF through your trial period or as a customer, you can also direct cdp-deploy to add these components (NiFi, SMM, Schema Registry, Flow Registry) to the installation. You need to edit repo.env, and change the value to 0:
+```
+export CDPONLY=0
+```
+
 By default cdp-deploy will setup and download repositories directly from the internet. However it is also possible to use cdp-deploy in an "offline" mode, by editing the repo.env file and changing the value to 1 for:
 ```
 LOCALREPO=1
