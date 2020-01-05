@@ -7,7 +7,8 @@ Latest installation version: CDP DC 7.0.3
 ### Requirements
 cdp-deploy works only on CentOS 7 or RHEL 7. OpenJDK 8 will be used. PostgreSQL 10 will be the underlying database for all the components.
 
-Your system needs at minimum 64GB RAM and at least 100GB disk space. A good instance type on AWS would be: m5.4xlarge
+Your system needs at minimum 64GB RAM and at least 100GB disk space. <br />
+A good instance type on AWS would be: m5.4xlarge
 
 An Internet connection is also required, as cdp-deploy will download various files required to perform the automated installation.
 
