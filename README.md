@@ -4,6 +4,7 @@ cdp-deploy is a bash script that will install a full single node CDP Data Center
 You will require a paywall username/password to download the bits and install. If you have access to CDF and its components, you can also set a flag for cdp-deploy to install those bits as well. 
 
 Latest installation version: CDP DC 7.0.3
+![alt text](https://github.com/willie-engelbrecht/cdp-deploy/blob/master/images/cdpdc.jpg "CDP DC")
 
 ### Requirements
 cdp-deploy works only on CentOS 7 or RHEL 7. OpenJDK 8 will be used. PostgreSQL 10 will be the underlying database for all the components.
