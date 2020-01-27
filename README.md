@@ -20,18 +20,8 @@ The general gist to use cdp-deploy:
 yum -y install git
 git clone https://github.com/willie-engelbrecht/cdp-deploy.git
 
-# Edit cdp-deploy/repo.env, and add your paywall username/password
-export PWALL_USER=""
-export PWALL_PASS=""
-
 # Now run the script
 ./cdp-deploy/cdp-deploy.sh
-```
-
-All download bits are behind a customer paywall, and only Cloudera customers have access to the binaries. Non customers can get access by creating a trial account and then you will have access for 60 days. Once you have your paywall username and password, you need to edit the repo.env file and add your username/password. This is required by the script to download the software:
-```
-export PWALL_USER=""
-export PWALL_PASS=""
 ```
 
 If you have access to CDF through your trial period or as a customer, you can also direct cdp-deploy to add these components (NiFi, SMM, Schema Registry, Flow Registry) to the installation. You need to edit repo.env, and change the value to 0:

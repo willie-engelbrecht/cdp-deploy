@@ -175,10 +175,14 @@ if __name__ == "__main__":
         if str(parcelsuri) != '': 
             print("Load a new local parcel repository location")
             loadLocalRepo()
+
+    if str(parcelsuri) == '':
+        parcelsuri = 'https://archive.cloudera.com/cdh7/7.0.3.0/parcels/'
     else:
-        if str(parcelsuri) != '': 
-            print("Adding additional remote parcel repos")
-            appendRemoteRepo()
+        parcelsuri = 'https://archive.cloudera.com/cdh7/7.0.3.0/parcels/,' + parcelsuri
+
+    print("Adding additional remote parcel repos")
+    appendRemoteRepo()
 
     print("Sleeping for 10 seconds")
     time.sleep(10)

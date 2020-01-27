@@ -13,16 +13,19 @@ export FQDN=$(echo $FQDNx | xargs)
 
 # Check if the paywall username/password has values, otherwise quit the script
 export TOQUIT=0
-if [ -z "${PWALL_USER}" ];
-then
-    echo "Please set a valid username for your PWALL_USER in repo.env"
-    export TOQUIT=1
-fi
-if [ -z "${PWALL_PASS}" ];
-then
-    echo "Please set a valid password for your PWALL_PASS in repo.env"
-    export TOQUIT=1
-fi
+#if [ -n "${REMOTE_PARCELS}" ]
+#then
+#    if [ -z "${PWALL_USER}" ];
+#    then
+#        echo "Please set a valid username for your PWALL_USER in repo.env"
+#        export TOQUIT=1
+#    fi
+#    if [ -z "${PWALL_PASS}" ];
+#    then
+#        echo "Please set a valid password for your PWALL_PASS in repo.env"
+#        export TOQUIT=1
+#    fi
+#fi
 
 # Check that we are the root user
 whoami | grep root > /dev/null
@@ -157,10 +160,10 @@ systemctl enable rngd
 systemctl start rngd
 
 # Download Cloudera Manager repo and install
-wget $CM_BASEURL/cloudera-manager.repo -P /etc/yum.repos.d/
-sed -e "s,username=changeme,username="${PWALL_USER}",g" -i /etc/yum.repos.d/cloudera-manager.repo
-sed -e "s,password=changeme,password="${PWALL_PASS}",g" -i /etc/yum.repos.d/cloudera-manager.repo
-sed -i "s/archive/${PWALL_USER}:${PWALL_PASS}@archive/g" /etc/yum.repos.d/cloudera-manager.repo
+wget $CM_BASEURL/cloudera-manager-trial.repo -P /etc/yum.repos.d/
+#sed -e "s,username=changeme,username="${PWALL_USER}",g" -i /etc/yum.repos.d/cloudera-manager.repo
+#sed -e "s,password=changeme,password="${PWALL_PASS}",g" -i /etc/yum.repos.d/cloudera-manager.repo
+#sed -i "s/archive/${PWALL_USER}:${PWALL_PASS}@archive/g" /etc/yum.repos.d/cloudera-manager.repo
 
 # Import the GPG Key
 rpm --import $CM_BASEURL/RPM-GPG-KEY-cloudera
