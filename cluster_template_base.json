@@ -1,6 +1,6 @@
 {
-    "cdhVersion": "7.0.3",
-    "cmVersion": "7.0.3",
+    "cdhVersion": "7.1.1-1",
+    "cmVersion": "7.1.1",
     "displayName": "singlenode",
     "hostTemplates": [
         {
@@ -23,8 +23,6 @@
                 "hue-HUE_SERVER-BASE",
                 "kafka-KAFKA_BROKER-BASE",
                 "oozie-OOZIE_SERVER-BASE",
-                "queuemanager-QUEUEMANAGER_STORE-BASE",
-                "queuemanager-QUEUEMANAGER_WEBAPP-BASE",
                 "ranger-RANGER_ADMIN-BASE",
                 "ranger-RANGER_TAGSYNC-BASE",
                 "ranger-RANGER_USERSYNC-BASE",
@@ -109,10 +107,6 @@
                 "value": "oozie"
             },
             {
-                "name": "queuemanager-QUEUEMANAGER_WEBAPP-BASE-queuemanager_cm_api_client_login_password",
-                "value": "supersecret1"
-            },
-            {
                 "name": "ranger-RANGER_ADMIN-BASE-ranger_database_password",
                 "value": "supersecret1"
             },
@@ -137,7 +131,7 @@
     "products": [
         {
             "product": "CDH",
-            "version": "7.0.3-1.cdh7.0.3.p0.1635019"
+            "version": "7.1.1-1.cdh7.1.1.p0.3266817"
         }
     ],
     "repositories": [
@@ -235,21 +229,19 @@
                 },
                 {
                     "base": true,
-                    "configs": [
-                        {
-                            "name": "ranger_database_host",
-                            "value": "xxFQDNxx"
-                        },
-                        {
-                            "name": "ranger_database_password",
-                            "variable": "ranger-RANGER_ADMIN-BASE-ranger_database_password"
-                        }
-                    ],
                     "refName": "ranger-RANGER_ADMIN-BASE",
                     "roleType": "RANGER_ADMIN"
                 }
             ],
             "serviceConfigs": [
+                {
+                    "name": "ranger_database_host",
+                    "value": "xxFQDNxx"
+                },
+                {
+                    "name": "ranger_database_password",
+                    "variable": "ranger-RANGER_ADMIN-BASE-ranger_database_password"
+                },
                 {
                     "name": "rangerusersync_user_password",
                     "variable": "ranger-rangerusersync_user_password"
@@ -557,32 +549,6 @@
                 }
             ],
             "serviceType": "ZOOKEEPER"
-        },
-        {
-            "refName": "queuemanager",
-            "roleConfigGroups": [
-                {
-                    "base": true,
-                    "refName": "queuemanager-QUEUEMANAGER_STORE-BASE",
-                    "roleType": "QUEUEMANAGER_STORE"
-                },
-                {
-                    "base": true,
-                    "configs": [
-                        {
-                            "name": "queuemanager_cm_api_client_login_password",
-                            "variable": "queuemanager-QUEUEMANAGER_WEBAPP-BASE-queuemanager_cm_api_client_login_password"
-                        },
-                        {
-                            "name": "queuemanager_cm_api_client_login_name",
-                            "value": "admin"
-                        }
-                    ],
-                    "refName": "queuemanager-QUEUEMANAGER_WEBAPP-BASE",
-                    "roleType": "QUEUEMANAGER_WEBAPP"
-                }
-            ],
-            "serviceType": "QUEUEMANAGER"
         }
     ]
 }

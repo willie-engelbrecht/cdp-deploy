@@ -86,7 +86,7 @@ RAND_STRING="a$(echo "$(date)$(hostname)" | md5sum);"
 RAND_PW=$(echo ${RAND_STRING:0:12})
 
 # Setup PostgreSQL 10 repo, and install
-yum -y install https://yum.postgresql.org/10/redhat/rhel-7-x86_64/pgdg-centos10-10-2.noarch.rpm
+yum -y install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 yum -y install postgresql10-server postgresql10
 wget -O - https://jdbc.postgresql.org/download/postgresql-42.2.9.jar > /usr/lib/postgresql-jdbc.jar
 /usr/pgsql-10/bin/postgresql-10-setup initdb
@@ -113,6 +113,8 @@ cat > /var/lib/pgsql/10/data/pg_hba.conf << EOF
   host    rman            rman            0.0.0.0/0               md5
   host    streamsmsgmgr   streamsmsgmgr   0.0.0.0/0               md5
   host    registry        registry        0.0.0.0/0               md5
+  host    activitymonitor activitymonitor 0.0.0.0/0               md5
+  host    schemaregistry  schemaregistry  0.0.0.0/0               md5
 EOF
 
 chown postgres:postgres /var/lib/pgsql/10/data/pg_hba.conf;
@@ -134,7 +136,8 @@ CREATE ROLE rman LOGIN PASSWORD 'supersecret1';
 CREATE ROLE scm LOGIN PASSWORD 'supersecret1';
 CREATE ROLE streamsmsgmgr LOGIN PASSWORD 'supersecret1';
 CREATE ROLE registry LOGIN PASSWORD 'supersecret1';
-CREATE DATABASE activitymonitor OWNER das ENCODING 'UTF-8';
+CREATE ROLE schemaregistry LOGIN PASSWORD 'supersecret1';
+CREATE DATABASE activitymonitor OWNER activitymonitor ENCODING 'UTF-8';
 CREATE DATABASE das OWNER das ENCODING 'UTF-8';
 CREATE DATABASE hive OWNER hive ENCODING 'UTF-8';
 CREATE DATABASE hue OWNER hue ENCODING 'UTF-8';
@@ -144,6 +147,7 @@ CREATE DATABASE rman OWNER rman ENCODING 'UTF-8';
 CREATE DATABASE scm OWNER scm ENCODING 'UTF-8';
 CREATE DATABASE streamsmsgmgr OWNER scm ENCODING 'UTF-8';
 CREATE DATABASE registry OWNER scm ENCODING 'UTF-8';
+CREATE DATABASE schemaregistry OWNER schemaregistry ENCODING 'UTF-8';
 EOF
 
 # Run the sql file to create the schema for all DB’s

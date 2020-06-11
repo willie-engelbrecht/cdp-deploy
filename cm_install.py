@@ -8,6 +8,8 @@ from cm_client.rest import ApiException
 from collections import namedtuple
 from pprint import pprint
 
+# API can be called from the browser: http://192.168.0.182:7180/api/v41/cm/deployment
+
 # https://cloudera.github.io/cm_api/docs/python-client-swagger/
 # https://archive.cloudera.com/cm7/7.0.3/generic/jar/cm_api/swagger-html-sdk-docs/python/README.html
 
@@ -30,7 +32,7 @@ cm_client.configuration.ssl_ca_cert = '/var/lib/cloudera-scm-server/certmanager/
 # Construct base URL for API
 api_host = 'http://localhost'
 port = '7180'
-api_version = 'v40'
+api_version = 'v41'
 api_url = api_host + ':' + port + '/api/' + api_version
 api_client = cm_client.ApiClient(api_url)
 
@@ -177,9 +179,9 @@ if __name__ == "__main__":
             loadLocalRepo()
 
     if str(parcelsuri) == '':
-        parcelsuri = 'https://archive.cloudera.com/cdh7/7.0.3.0/parcels/'
+        parcelsuri = 'https://archive.cloudera.com/cdh7/7.1.1.0/parcels/'
     else:
-        parcelsuri = 'https://archive.cloudera.com/cdh7/7.0.3.0/parcels/,' + parcelsuri
+        parcelsuri = 'https://archive.cloudera.com/cdh7/7.1.1.0/parcels/,' + parcelsuri
 
     print("Adding additional remote parcel repos")
     appendRemoteRepo()
