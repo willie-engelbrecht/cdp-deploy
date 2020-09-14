@@ -180,7 +180,7 @@ then
 else
     yum -y install cloudera-manager-server cloudera-manager-agent
 fi
-
+exit
 # Run the prepare script for SCM db
 /opt/cloudera/cm/schema/scm_prepare_database.sh postgresql scm scm supersecret1
 
