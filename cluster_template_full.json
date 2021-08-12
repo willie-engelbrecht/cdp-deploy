@@ -1,6 +1,6 @@
 {
-    "cdhVersion": "7.1.4-1",
-    "cmVersion": "7.1.4",
+    "cdhVersion": "7.1.7-1",
+    "cmVersion": "7.4.4",
     "displayName": "singlenode",
     "hostTemplates": [
         {
@@ -159,7 +159,7 @@
     "products": [
         {
             "product": "CDH",
-            "version": "7.1.4-1.cdh7.1.4.p0.6300266"
+            "version": "7.1.7-1.cdh7.1.7.p0.15945976"
         },
         {
             "product": "SCHEMAREGISTRY",
