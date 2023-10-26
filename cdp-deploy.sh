@@ -87,9 +87,9 @@ RAND_PW=$(echo ${RAND_STRING:0:12})
 
 # Setup PostgreSQL 10 repo, and install
 yum -y install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
-yum -y install postgresql10-server postgresql10
+yum install -y postgresql12-server postgresql12
 wget -O - https://jdbc.postgresql.org/download/postgresql-42.2.9.jar > /usr/lib/postgresql-jdbc.jar
-/usr/pgsql-10/bin/postgresql-10-setup initdb
+/usr/pgsql-12/bin/postgresql-12-setup initdb
 
 # Allow listeners from any host
 sed -e 's,#listen_addresses = \x27localhost\x27,listen_addresses = \x27*\x27,g' -i /var/lib/pgsql/10/data/postgresql.conf
