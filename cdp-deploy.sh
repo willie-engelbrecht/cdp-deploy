@@ -121,8 +121,8 @@ chown postgres:postgres /var/lib/pgsql/12/data/pg_hba.conf;
 chmod 600 /var/lib/pgsql/12/data/pg_hba.conf
 
 # Enable and start PostgreSQL
-systemctl enable postgresql-10.service
-systemctl start postgresql-10.service
+systemctl enable postgresql-12.service
+systemctl start postgresql-12.service
 
 # Create a DDL file for all our DBs
 cat > /tmp/create_ddl_cdp.sql << EOF
