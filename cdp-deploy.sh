@@ -92,16 +92,16 @@ wget -O - https://jdbc.postgresql.org/download/postgresql-42.2.9.jar > /usr/lib/
 /usr/pgsql-12/bin/postgresql-12-setup initdb
 
 # Allow listeners from any host
-sed -e 's,#listen_addresses = \x27localhost\x27,listen_addresses = \x27*\x27,g' -i /var/lib/pgsql/10/data/postgresql.conf
+sed -e 's,#listen_addresses = \x27localhost\x27,listen_addresses = \x27*\x27,g' -i /var/lib/pgsql/12/data/postgresql.conf
 
 # Increase number of connections
-sed -e 's,max_connections = 100,max_connections = 300,g' -i  /var/lib/pgsql/10/data/postgresql.conf
+sed -e 's,max_connections = 100,max_connections = 300,g' -i  /var/lib/pgsql/12/data/postgresql.conf
 
 # Save the original & replace with a new pg_hba.conf
-mv /var/lib/pgsql/10/data/pg_hba.conf /var/lib/pgsql/10/data/pg_hba.conf.backup
+mv /var/lib/pgsql/12/data/pg_hba.conf /var/lib/pgsql/12/data/pg_hba.conf.backup
 
 # Setup the new pg_hba.conf file
-cat > /var/lib/pgsql/10/data/pg_hba.conf << EOF
+cat > /var/lib/pgsql/12/data/pg_hba.conf << EOF
   # TYPE  DATABASE        USER            ADDRESS                 METHOD
   local   all             all                                     peer
   host    scm             scm             0.0.0.0/0               md5
@@ -117,8 +117,8 @@ cat > /var/lib/pgsql/10/data/pg_hba.conf << EOF
   host    schemaregistry  schemaregistry  0.0.0.0/0               md5
 EOF
 
-chown postgres:postgres /var/lib/pgsql/10/data/pg_hba.conf;
-chmod 600 /var/lib/pgsql/10/data/pg_hba.conf
+chown postgres:postgres /var/lib/pgsql/12/data/pg_hba.conf;
+chmod 600 /var/lib/pgsql/12/data/pg_hba.conf
 
 # Enable and start PostgreSQL
 systemctl enable postgresql-10.service
